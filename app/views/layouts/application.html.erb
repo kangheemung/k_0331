@@ -3,9 +3,14 @@
   <head>
     <title>K0331</title>
     <%= csrf_meta_tags %>
-    <%= link_to "sine_up", users_new_path %>
-    <%= link_to "login", sessions_new_path %>
-
+    <% if current_user.present? %>
+      <%= link_to "top", root_path%>
+     <%= link_to "logout",sessions_destroy_path ,method: :delete %>
+    現在ログインID は<%= current_user.username %>#
+    <% else %>
+        <%= link_to "sine_up", users_new_path %>
+      <%= link_to "login", sessions_new_path %>
+    <% end %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
