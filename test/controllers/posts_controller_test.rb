@@ -2,22 +2,22 @@ require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get posts_index_url
+    get p_index_path
     assert_response :success
   end
 
   test "should get new" do
-    get posts_new_url
+    get p_new_path
     assert_response :success
   end
 
   test "should get show" do
-    get posts_show_url
+    get p_show_path
     assert_response :success
   end
 
   test "should get edit" do
-    get posts_edit_url
+    get p_edit_path
     assert_response :success
   end
 
