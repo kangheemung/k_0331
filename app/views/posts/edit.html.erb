@@ -1,2 +1,9 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+
+<div class="container">
+    <h1>guest book edit</h1>
+    <%=form_for @post, url: p_update_path(@post.id) do |f|%>
+        <p><%= f.label:content%></p>
+        <p><%= f.text_field :content %></p>
+        <p> <%=f.submit%></p>
+    <% end%>
+</div>

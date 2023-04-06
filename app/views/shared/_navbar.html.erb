@@ -1,5 +1,5 @@
 <% if current_user.present? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TEST</a>
       <a>現在<%=current_user.username%>様がログイン中</a>
@@ -12,7 +12,7 @@
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Home",root_path %></a>
           </li>
          <li class="nav-item">
-             <%= link_to "logout", "#" %>
+             <%= link_to "logout",logout_path, method: :delete %>
             </a>
           </li>
           <li class="nav-item">
@@ -23,7 +23,7 @@
     </div>
   </nav>
 <% else %>  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TEST</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,25 +34,22 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Home",  root_path %></a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= link_to "Help",  help_path %></a>
+          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             start
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               start
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#"></a></li>
               <li><a class="dropdown-item" href="#">  <%= link_to "sine_up", users_new_path %></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#"> <%= link_to "login", sessions_new_path %></a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= link_to "Help",  help_path %></a>
-          </li>
+          
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>

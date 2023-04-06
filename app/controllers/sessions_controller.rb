@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-    user=User.find_by(email: params[:users][:email].downcase)
-    if user&&user.authenticate(params[:users][:password])
-      
+    user=User.find_by(email: params[:user][:email].downcase)
+    if user&&user.authenticate(params[:user][:password])
+    
       session[:user_id] = user.id
       flash[:notice]="ログインしました。"
       redirect_to users_show_path(user.id)

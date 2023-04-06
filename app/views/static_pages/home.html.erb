@@ -6,11 +6,18 @@
     <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
     sample application.
   </h2>
-
-  <%= link_to "Sign up now!", users_new_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "login now!",  sessions_new_path, class: "btn btn-lg btn-primary" %>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
+<% if current_user.present? %>
+  <%= link_to "Les go post!", p_index_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "let's write your thoughts", p_new_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
             'http://rubyonrails.org/' %>
-<%= image_tag "kitten.jpg" %>
+  <%= image_tag "kitten.jpg" %>
+<% else %>
+ <%= link_to "Sign up now!", users_new_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "login now!",  sessions_new_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
+            'http://rubyonrails.org/' %>
+  <%= image_tag "kitten.jpg" %>
+ 
+<% end %>
+</div>
