@@ -2,7 +2,7 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TEST</a>
-      <a>現在<%=current_user.username%>様がログイン中</a>
+      <a class="navbar-brand">現在<%=current_user.username%>様がログイン中</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,6 +10,9 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Home",root_path %></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",users_show_path(current_user) %></a>
           </li>
          <li class="nav-item">
              <%= link_to "logout",logout_path, method: :delete %>

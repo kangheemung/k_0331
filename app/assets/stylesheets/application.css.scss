@@ -81,11 +81,17 @@ p {
   color: #fff;
   text-decoration: none;
 }
-img {
- display: none;
+
+.gravatar {
+  float: center;
+  margin-right: 10px;
+  margin-left: 10px;
 }
-.start{
-  text-ligen: right;
+
+.gravatar_edit {
+  margin-top: 15px;
 }
+.edit{margin-left:15px;}
+
 
 
