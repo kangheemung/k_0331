@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find_by(id: params[:user_id])
+    @posts=current_user.posts.all
+  
   end
   def create
     @post = current_user.posts.build(post_params)

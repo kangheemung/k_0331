@@ -15,9 +15,9 @@ class UsersController < ApplicationController
       if @user.save
         flash[:success] = "Welcome to the Sample App!"
         session[:user_id] = @user.id
-        p"========create======="
-        p params
-        p"=================="
+        #p"========create======="
+        #p params
+        #p"=================="
         #p"============"
         #p @user.errors.full_messages
         #p"============"

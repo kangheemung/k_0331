@@ -1,4 +1,4 @@
-<% if current_user.present? %>
+<% if logged_in? %>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">TEST</a>
@@ -11,8 +11,15 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Home",root_path %></a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "post一覧",p_index_path %></a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",users_show_path(current_user) %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypost",p_show_path(current_user) %></a>
           </li>
          <li class="nav-item">
              <%= link_to "logout",logout_path, method: :delete %>
