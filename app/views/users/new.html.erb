@@ -1,16 +1,9 @@
 <% provide(:title, 'Sign up') %>
+<% provide(:button_text, 'Create my account') %>
+<% provide(:form_action, users_path) %>
 <div class="container">
     <h1>sign_up page</h1>
-    <%=form_for @user, url: users_create_path do |f|%>
-    <%= render 'shared/error_messages' %>
-        <p><%= f.label:username　%></p>
-        <p><%= f.text_field :username, :placeholder => "User name" %></p>
-        <p><%= f.label:email %></p>
-        <p><%= f.text_field :email, :placeholder => "email" %></p>
-        <p><%= f.label :password %></p>
-        <p><%= f.password_field  :password %></p>
-        <p><%= f.label :password_confirmation %></p>
-        <p><%= f.password_field :password_confirmation %></p>
-        <%=f.submit%>
-    <% end%>
+   <%= render partial: "form", locals: { user: @user } %>
+  
+
 </div>

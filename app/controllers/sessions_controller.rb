@@ -2,21 +2,19 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-    user=User.find_by(email: params[:user][:email].downcase)
-    if user&&user.authenticate(params[:user][:password])
-     log_in(user)
-      #session[:user_id] = user.id
-      remember(user)
-      flash[:notice]="ログインしました。"
-      redirect_to users_show_path(user.id)
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if  @user &.authenticate(params[:session][:password])
+      log_in(@user)
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to users_show_path(@user.id)
     else
-      :new
+      flash.now[:danger] = 'Invalid email/password combination' # 本当は正しくない
+      render 'new'
     end
   end
   
   def destroy
     log_out if logged_in?
-    flash[:notice] ="logout"
-    redirect_to root_path
+    redirect_to root_url
   end
 end

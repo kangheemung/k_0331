@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   get 'users/index'=>'users#index',as:'users_index'
   get 'users/new'=>'users#new', as:'users_new'
-  post'users/create'=>'users#create'
+  post'users/create'=>'users#create',as:'users'
   get 'users/:id/edit'=>'users#edit',as:'users_edit'
   patch'users/:id/update'=>'users#update',as:'users_update'
   delete 'users/destoy'=>'users#destroy',as: 'users_destroy'

@@ -4,19 +4,42 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-  test "invalid signup information" do
+  def setup
+    @user = users(:michael)
+  end
+  test "valid signup information" do
     get signup_path
-    assert_no_difference 'User.count' do
-      post users_path, params: { user: { name:  "",
-                                         email: "user@invalid",
-                                         password:              "foo",
-                                         password_confirmation: "bar" } }
+    assert_difference 'User.count', 1 do
+      post_via_redirect users_path, user: { name:  "Example User",
+                                            email: "user@example.com",
+                                            password:              "password",
+                                            password_confirmation: "password" }
     end
+    assert_template 'users/show'
+  end
+
     follow_redirect!
     assert_template 'users/show'
-    assert_template 'users/new'
-    assert is_logged_in?
-    assert_select 'div#<CSS id for error explanation>'
-    assert_select 'div.<CSS class for field with error>'
+    assert_select "a[href=?]", login_path, count: 0
+    assert_select "a[href=?]", logout_path
+    assert_select "a[href=?]", user_path(@user)
+    delete logout_path
+    assert_not is_logged_in?
+    assert_redirected_to root_url
+    assert_select "a[href=?]", login_path
+    assert_select "a[href=?]", logout_path,      count: 0
+    assert_select "a[href=?]", user_path(@user), count: 0
+  test "login with remembering" do
+    log_in_as(@user, remember_me: '1')
+    assert_not_empty cookies['remember_token']
+  end
+
+  test "login without remembering" do
+    # クッキーを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    delete logout_path
+    # クッキーを削除してログイン
+    log_in_as(@user, remember_me: '0')
+    assert_empty cookies['remember_token']
   end
 end
