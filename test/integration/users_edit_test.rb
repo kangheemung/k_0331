@@ -34,4 +34,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               password_confirmation: "bar" } }
     assert_template 'users/edit'
   end
+  test "successful edit" do
+    log_in_as(@user)
+    get edit_user_path(@user)
+    
+    
+    
+  end
 end
