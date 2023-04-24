@@ -1,4 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+require "minitest/reporters"
+Minitest::Reporters.use!
 
 
 
@@ -29,9 +33,9 @@ class ActionDispatch::IntegrationTest
   end
 end  
 
-  private
+private
 
-    # 統合テスト内ではtrueを返す
-    def integration_test?
-      defined?(post_via_redirect)
-    end
+  # 統合テスト内ではtrueを返す
+  def integration_test?
+    defined?(post_via_redirect)
+  end
