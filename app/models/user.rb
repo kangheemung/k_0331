@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token
+    attr_accessor :remember_token #attr_accessorを使ってアクセス可能な属性を作成する。
     has_secure_password
      has_many :posts
      before_save { email.downcase! }
@@ -33,17 +33,6 @@ class User < ApplicationRecord
     def forget
       update_attribute(:remember_digest, nil)
     end
-   class << self
-     # 渡された文字列のハッシュ値を返す
-      def digest(string)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                        BCrypt::Engine.cost
-        BCrypt::Password.create(string, cost: cost)
-      end
-     # ランダムなトークンを返す
-      def new_token
-        SecureRandom.urlsafe_base64
-      end
-   end
+  
 
 end
