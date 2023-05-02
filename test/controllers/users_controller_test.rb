@@ -8,12 +8,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
   test "should redirect edit when logged in as wrong user" do
     log_in_as(@other_user)
-    get edit_user_path(@user)
+    get users_edit_path(@user)
     assert flash.empty?
     assert_redirected_to root_url
   end
    test "should redirect index when not logged in" do
     get users_path
+
     assert_redirected_to login_url
   end
   test "should not allow the admin attribute to be edited via the web" do
@@ -43,12 +44,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    get users_show_path
+    get users_show_path(@user.id)
     assert_response :success
   end
 
   test "should get edit" do
-    get users_edit_path
+    session[:user_id] = @user.id 
+    get users_edit_path params: { id: @user.id }
+  
     assert_response :success
   end
 

@@ -38,7 +38,7 @@ class UsersController < ApplicationController
      #p"============"
         #   p @user.errors.full_messages
       #p"============"
-       @user=User.find_by(id: params[:id])
+       
       if @user.update_attributes(user_params)
           #  session[:user_id]=user.id
           flash[:success] = "Profile updated"
@@ -69,6 +69,6 @@ class UsersController < ApplicationController
         # 正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+       redirect_to(root_url) unless current_user?(@user)
     end
 end
