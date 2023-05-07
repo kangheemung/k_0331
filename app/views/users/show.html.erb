@@ -1,8 +1,18 @@
  <p><% provide(:title, @user.username) %></p>
+ <div>
  <h1>
   <p><%= gravatar_for @user%><%= @user.username %></p>
   <p> user_email:<%= @user.email%></p>
  </h1>
+   <div class="col-md-8">
+    <% if @user.posts.any? %>
+      <h3>posts (<%= @user.posts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
  <div class="edit">
-  <%=link_to "edit", users_edit_path(@user.id) %>
+  <%=link_to "edit", edit_user_path(@user.id) %>
  </div>

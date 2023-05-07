@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
 <p> =================-</p>
 <p>content:<%= post.content %></p>
-<p>user_name:<%=post.user.username%></p>
+<p>user_name:<%=post.user.username %></p>
 <p> =================-</p>
 <%end%>
-<%=link_to "let's go write",p_new_path%>
+<%=link_to "let's go write",posts_new_path%>

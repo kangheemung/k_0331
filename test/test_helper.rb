@@ -4,12 +4,12 @@ require 'rails/test_help'
 require "minitest/reporters"
 require 'test_helper'
 Minitest::Reporters.use!
-
+ENV['RAILS_ENV'] ||= 'test'
 
 
 class ActiveSupport::TestCase
-include ApplicationHelper
-fixtures :all
+
+ fixtures :all
 
   # テストユーザーがログイン中の場合にtrueを返す
   def is_logged_in?
@@ -19,21 +19,20 @@ fixtures :all
   def log_in_as(user)
     session[:user_id] = user.id
   end
-end
-class ActionDispatch::IntegrationTest
+
   # テストユーザーとしてログインする
   def log_in_as(user, options = {})
     password    = options[:password]    || 'password'
     remember_me = options[:remember_me] || '1'
     if integration_test?
-      post sessions_new_path, session: { email:       user.email,
+      post login_path, params: { session: { email: user.email,
                                   password:    password,
-                                  remember_me: remember_me }
+                                  remember_me: remember_me }}
     else
       session[:user_id] = user.id
     end
   end
-end  
+
 
 private
 
@@ -41,3 +40,4 @@ private
   def integration_test?
     defined?(post_via_redirect)
   end
+end

@@ -1,26 +1,51 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  
+  def setup
+    @post = posts(:orange)
+  end
   test "should get index" do
-    get p_index_path
+    get posts_index_path
     assert_response :success
   end
 
   test "should get new" do
-    get p_new_path
+    get posts_new_path
     assert_response :success
   end
 
   test "should get show" do
-    get p_show_path(@user.id)
+    get posts_path
     assert_response :success
-    post "/articles",
-    params: { article: { title: "can create", body: "article successfully." } }
   end
 
   test "should get edit" do
-    get p_edit_path(@user.id)
+    get edit_posts_path
     assert_response :success
   end
+    test "should redirect create when not logged in" do
+    assert_no_difference 'Post.count' do
+      post posts_path, params: { post: { content: "Lorem ipsum" } }
+    end
+    assert_redirected_to login_url
+  end
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'Post.count' do
+      delete post_path(@post)
+    end
+    assert_redirected_to login_url
+  end
+  test "should redirect destroy for wrong post" do
+    log_in_as(users(:michael))
+     post = posts(:ants)
+    assert_no_difference 'Post.count' do
+      delete post_path(post)
+    end
+    assert_redirected_to root_url
+  end
+
+
 
 end

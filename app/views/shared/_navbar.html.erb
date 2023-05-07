@@ -15,17 +15,17 @@
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Users", users_index_path %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "post一覧",p_index_path %></a>
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "post一覧",posts_index_path %></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",user_path(current_user) %></a>
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",users_path(current_user) %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypost",p_show_path(current_user) %></a>
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypost",posts_path(current_user) %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><%= link_to "Settings", users_edit_path(current_user) %></a>
+            <a class="nav-link active" aria-current="page" href="#"><%= link_to "Settings", edit_user_path(current_user) %></a>
           </li>
           
          <li class="nav-item">

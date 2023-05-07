@@ -1,6 +1,8 @@
+<% provide(:title, 'All users') %>
 <h1>ALL users</h1>
 
 <table>
+  <%= will_paginate %>
   <thead>
     <tr>
       <th>Name</th>
@@ -11,16 +13,22 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.username %></td>
+    <li>
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.username, user %>
+    </li>
+    <%= render user %>
+
     <td><%= user.email %></td>
-    <td><%= link_to 'Show', users_show_path(user.id) %></td>
-    <td><%= link_to 'Edit', users_edit_path(user.id) %></td>
-    <td><%= link_to 'Destroy', users_destroy_path, method: :delete,
+    <td><%= link_to 'Show', users_path(user.id) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+    <td><%= link_to 'Destroy',users_destoy_path, method: :delete,
                                      data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+<%= will_paginate %>
 </table>
 
 <br>
 
-<%= link_to 'New User', users_new_path %>
+<%= link_to 'New User', signup_path %>
