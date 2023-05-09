@@ -3,6 +3,10 @@
  <h1>
   <p><%= gravatar_for @user%><%= @user.username %></p>
   <p> user_email:<%= @user.email%></p>
+  <p><%= @user.created_at %>, <%= @user.updated_at %></p>
+  <p>
+  Time.now: <%= Time.now %>
+</p>
  </h1>
    <div class="col-md-8">
     <% if @user.posts.any? %>

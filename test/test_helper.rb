@@ -4,13 +4,12 @@ require 'rails/test_help'
 require "minitest/reporters"
 require 'test_helper'
 Minitest::Reporters.use!
-ENV['RAILS_ENV'] ||= 'test'
 
 
 class ActiveSupport::TestCase
 
  fixtures :all
-
+ include ApplicationHelper
   # テストユーザーがログイン中の場合にtrueを返す
   def is_logged_in?
     !session[:user_id].nil?
@@ -25,7 +24,7 @@ class ActiveSupport::TestCase
     password    = options[:password]    || 'password'
     remember_me = options[:remember_me] || '1'
     if integration_test?
-      post login_path, params: { session: { email: user.email,
+      post login_path(user.id), params: { session: { email: user.email,
                                   password:    password,
                                   remember_me: remember_me }}
     else

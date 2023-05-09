@@ -16,17 +16,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    get posts_path
+    get posts_path(@post)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_posts_path
+    get edit_posts_path(@post)
     assert_response :success
   end
-    test "should redirect create when not logged in" do
+  test "should redirect create when not logged in" do
     assert_no_difference 'Post.count' do
-      post posts_path, params: { post: { content: "Lorem ipsum" } }
+      post posts_path(@post), params: { post: { content: "Lorem ipsum" } }
     end
     assert_redirected_to login_url
   end

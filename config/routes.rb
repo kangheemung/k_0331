@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   
+ 
   root 'static_pages#home'
   get '/help'=>'static_pages#help'
   get '/about'=>'static_pages#about'
   get '/contact'=> 'static_pages#contact'
+  
   get 'posts/index'=>'posts#index'
   get 'posts/new'=>'posts#new'
   post'posts/create'=>'posts#create' 
+  delete 'posts/destoy'=>'posts#destroy'
   get 'posts/:user_id/edit' => 'posts#edit',as: 'edit_posts'
   patch'posts/:user_id/update'=>'posts#update',as: 'post'
   get 'posts/:user_id'=>'posts#show',as: 'posts'
-  delete 'posts/destoy'=>'posts#destroy'
   
   get 'users/index'=>'users#index'
   get '/signup'=>'users#new'
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
   get 'users/:id'=>'users#show',as: 'users'
   
   get 'account_activations/edit'=>'account_activations#edit'
+  get 'password_resets/new'=> 'password_resets#new',as:'new_password_reset'
+  post 'password_resets/create'=>'password_resets#create',as:'password_resets'
+  get 'password_resets/:id/edit'=>'password_resets#edit',as:'edit_password_reset'
+  patch'password_resets/:id/update'=>'password_resets#update',as:'password_reset'
   
   get '/login'=>'sessions#new'
   delete'/logout'=>'sessions#destroy'

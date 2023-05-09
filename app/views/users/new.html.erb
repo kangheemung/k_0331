@@ -1,9 +1,15 @@
 <% provide(:title, 'Sign up') %>
 <% provide(:button_text, 'Create my account') %>
-<% provide(:form_action, signup_path) %>
+<% provide(:form_action, signup_path )%>
 <div class="container">
     <h1>sign_up page</h1>
-   <%= render partial: "form", locals: { user: @user } %>
-  
-
-</div>
+      <%= render partial: "form", locals: { user: @user } %>
+    </div>
+<% if @user.errors.any? %>
+  <div id="error_explanation">      
+    <div class="alert alert-danger">　
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    
+  </div>
+<% end %>
