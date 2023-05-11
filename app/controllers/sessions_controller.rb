@@ -2,12 +2,13 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-      render template: 'users/form', layout: 'user'
-    p"============"
-    p params 
-    p"============"
+  
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+       p"============"
+    p params 
+    p"============"
+       render action: :new
         if user.activated?
           log_in user
           params[:session][:remember_me] == '1' ? remember(user) : forget(user)

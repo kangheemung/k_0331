@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   get '/signup'=>'users#new'
   post'/signup'=>'users#create'
   get 'users/:id/edit'=>'users#edit',as: 'edit_user'
-  patch'users/:id/update'=>'users#update',as: 'user'
+  patch'users/:id/update'=>'users#update'
   delete 'users/destoy'=>'users#destroy'
-  get 'users/:id'=>'users#show',as: 'users'
+  get 'users/:id'=>'users#show',as: 'user'
   
   get 'account_activations/edit'=>'account_activations#edit'
   get 'password_resets/new'=> 'password_resets#new',as:'new_password_reset'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get 'password_resets/:id/edit'=>'password_resets#edit',as:'edit_password_reset'
   patch'password_resets/:id/update'=>'password_resets#update',as:'password_reset'
   
-  get '/login'=>'sessions#new'
+  get '/login'=>'sessions#new',as:'login'
   delete'/logout'=>'sessions#destroy'
   post '/login'=>'sessions#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

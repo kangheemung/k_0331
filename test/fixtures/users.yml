@@ -1,6 +1,6 @@
-micheal:
-  username: Micheal Example
-  email: micheal@example.com
+michael:
+  username: Michael Example
+  email: michael@example.com
   password_digest: <%= User.digest('password') %>
   admin: true
   activated: true
@@ -12,7 +12,7 @@ archer:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  
+
 lana:
   username: Lana Kane
   email: hands@example.gov
@@ -20,20 +20,12 @@ lana:
   activated: true
   activated_at: <%= Time.zone.now %>
 
-mallory:
-  username: Mallory Archer
+malory:
+  username: Malory Archer
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
-  
-red:
-  username: Red Marlboro
-  email: red@example.com
-  password_digest: <%= User.digest('password') %>
-  activated: false
-  activated_at: <%= Time.zone.now %>
-
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -43,3 +35,4 @@ user_<%= n %>:
   activated: true
   activated_at: <%= Time.zone.now %>
 <% end %>
+

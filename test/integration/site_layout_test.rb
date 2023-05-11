@@ -17,11 +17,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "title", full_title("Sign up")
     
   end
+  def setup
+    @user = users(:michael)
+  end
   
   test "layout links when logged in user" do
-   def setup
-    @user = users(:michael)
-   end
+
     log_in_as(@user)
     assert_select "a[href=?]", signup_path
     assert_select "a[href=?]", users_path

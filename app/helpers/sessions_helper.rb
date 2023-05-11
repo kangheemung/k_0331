@@ -11,12 +11,24 @@ module SessionsHelper
        end
      end
     
-     def logged_in?
-          !current_user.nil?
-     end
+    def logged_in?
+        !current_user.nil?
+    end
     def log_in(user)
       session[:user_id] = user.id
     end
+    def sign_in(user)
+      remember_token = User.new_remember_token
+      cookies.permanent[:remember_token] = remember_token
+      user.update_attribute(:remember_token, User.encrypt(remember_token))
+      self.current_user = user
+    end
+      
+    def sign_out
+      self.current_user = nil
+      cookies.delete(:remember_token)
+    end
+
   
     def remember(user)
       user.remember
@@ -42,11 +54,28 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
-     
+      # 永続的セッションを破棄する
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+
        # 現在のユーザーをログアウトする
     def log_out
       forget(current_user)
       session.delete(:user_id)
       @current_user = nil
     end
+
+  # 記憶したURL (もしくはデフォルト値) にリダイレクト
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # アクセスしようとしたURLを覚えておく
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
 end
