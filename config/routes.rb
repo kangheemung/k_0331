@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   
   get 'posts/index'=>'posts#index'
   get 'posts/new'=>'posts#new'
-  post'posts/create'=>'posts#create' 
+  post'posts/create'=>'posts#create' ,as: 'post'
   delete 'posts/destoy'=>'posts#destroy'
   get 'posts/:user_id/edit' => 'posts#edit',as: 'edit_posts'
-  patch'posts/:user_id/update'=>'posts#update',as: 'post'
+  patch'posts/:user_id/update'=>'posts#update'
   get 'posts/:user_id'=>'posts#show',as: 'posts'
   
   get 'users/index'=>'users#index'
   get '/signup'=>'users#new'
-  post'/signup'=>'users#create'
+  post'/signup'=>'users#create',as: 'signup_create'
   get 'users/:id/edit'=>'users#edit',as: 'edit_user'
-  patch'users/:id/update'=>'users#update'
+  patch'users/:id/update'=>'users#update',as: 'users'
   delete 'users/destoy'=>'users#destroy'
   get 'users/:id'=>'users#show',as: 'user'
   

@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts=current_user.posts.all
+    user = User.find(params[:id])
+    @posts=user.posts.all
   
   end
   def create
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to root_path
     else
-      @feed_items = []
+     
       render 'static_pages/home'
     end  
     #p "==========create"

@@ -14,7 +14,7 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-    mail = UserMailer.password_reset
+    mail = UserMailer.password_reset(users)
     assert_equal "Password reset", mail.subject
     assert_equal ["to@example.org"], mail.to
     assert_equal [user.email], mail.to

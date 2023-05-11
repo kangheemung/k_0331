@@ -1,6 +1,6 @@
 <div class="container">
     <h1>guest book</h1>
-    <%=form_for @post, url: posts_create_path do |f|%>
+    <%=form_for @post, url: post_path do |f|%>
         <p><%= f.label:content%></p>
         <p><%= f.text_field :content %></p>
         <p> <%=f.submit%></p>

@@ -15,14 +15,14 @@
     </tr>
   </thead>
 
-
-<% @users.each do |user| %>
+<%= will_paginate %>
+<%# @users.each do |user| %>
   <tr>
     <li>
-        <%= render user %>
+        <%= render @users %>
     </li>
   </tr>
-<% end %>
+<%# end %>
 <%= will_paginate %>
 </table>
 

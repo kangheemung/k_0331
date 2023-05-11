@@ -5,6 +5,7 @@
     <h1>sign_up page</h1>
   
     <%= form_for(@user, :url => {:action => 'create'} ) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
        <%#= render 'shared/error_messages', object: f.object %>
       <%= render partial: "form", :locals => {:f => f} %>
     <% end %>
