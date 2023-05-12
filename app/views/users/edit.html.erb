@@ -8,6 +8,7 @@
     <%= form_for(@user, url:users_path(@user)) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= render partial: "form", :locals => {:f => f} %>
+      <%= hidden_field_tag :email, @user.email %>
     <% end %>
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
