@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   patch'posts/:user_id/update'=>'posts#update'
   get 'posts/:user_id'=>'posts#show',as: 'posts'
   
-  get 'users/index'=>'users#index'
+  get 'users/index'=>'users#index',as: 'users_index'
   get '/signup'=>'users#new'
   post'/signup'=>'users#create',as: 'signup_create'
   get 'users/:id/edit'=>'users#edit',as: 'edit_user'
@@ -22,13 +22,13 @@ Rails.application.routes.draw do
   delete 'users/destoy'=>'users#destroy'
   get 'users/:id'=>'users#show',as: 'user'
   
-  get 'account_activations/edit'=>'account_activations#edit'
-  get 'password_resets/new'=> 'password_resets#new',as:'new_password_reset'
-  post 'password_resets/create'=>'password_resets#create',as:'password_resets'
-  get 'password_resets/:id/edit'=>'password_resets#edit',as:'edit_password_reset'
-  patch'password_resets/:id/update'=>'password_resets#update',as:'password_reset'
+  get 'account_activations/edit'=>'account_activations#edit',as: 'edit_account_activation'
+  get 'password_resets/new'=> 'password_resets#new',as: 'new_password_reset'
+  post 'password_resets/create'=>'password_resets#create',as: 'password_resets'
+  get 'password_resets/:id/edit'=>'password_resets#edit',as: 'edit_password_reset'
+  patch'password_resets/:id/update'=>'password_resets#update',as: 'password_reset'
   
-  get '/login'=>'sessions#new',as:'login'
+  get '/login'=>'sessions#new',as: 'login'
   delete'/logout'=>'sessions#destroy'
   post '/login'=>'sessions#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

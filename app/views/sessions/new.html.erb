@@ -2,8 +2,8 @@
 <% provide(:form_action, login_path )%>
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
-<%= form_for(:session, url: login_path ) do |f| %>
-<%= render :partial => "users/form", :locals => {:f => f,:session => true}%>
+
+<%= render partial: "users/form", locals: {session: :session,:session => true} %>
 
 <%#=form_for "session", url: login_path do |f|%>
     <p><%#= f.label:email %></p>
@@ -15,8 +15,7 @@
     <p><%#= f.password_field  :password_confirmation %></p>
     <p><%#= f.label :remember_me, class: "checkbox inline" do %>
     <p><%#= f.check_box :remember_me %>
-      <span>Remember me on this computer</span>
+     <p>New user <%= link_to "Sign up now!", signup_path %></p>
     <%# end %>
     <%#=#f.submit%>
-<% end %>
-  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  
