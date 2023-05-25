@@ -1,9 +1,0 @@
-
-<div class="container">
-    <h1>guest book edit</h1>
-    <%=form_for @post, url: post_path(@post.id) do |f|%>
-        <p><%= f.label:content%></p>
-        <p><%= f.text_field :content %></p>
-        <p> <%=f.submit%></p>
-    <% end%>
-</div>

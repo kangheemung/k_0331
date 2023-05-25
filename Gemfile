@@ -7,7 +7,7 @@ gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 gem 'sqlite3'
 gem 'bootstrap'
 #gem 'bootstrap-sass'
-
+gem 'mailgun_rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -18,7 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'carrierwave',             '0.10.0'
+gem 'mini_magick',             '3.8.0'
+gem 'fog',                     '1.36.0'
 # Use jquery as the JavaScript library
 gem 'jbuilder', '~> 2.5'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -29,7 +31,9 @@ gem 'jquery-ui-rails'
 gem 'faker',          '1.7.3'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
-
+gem 'gmail'
+gem 'mail'
+gem 'resque', require: 'resque/server'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

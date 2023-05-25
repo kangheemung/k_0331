@@ -1,31 +1,20 @@
-  <%= form_with model: @user,url: yield(:form_action) do |f| %>
-    <%#= render 'shared/error_messages' %>
-      <% if local_assigns[:session].present?%>
-       login 
-        <%= f.label :email %>
-        <%= f.text_field :email, class: 'form-control' %>
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-        <%= f.label :password_confirmation %>
-        <%= link_to "(forgot password)", new_password_reset_path %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-        <%= f.label :remember_me, class: "checkbox inline" do %>
-          <%= f.check_box :remember_me %>
-          <span>Remember me on this computer</span>
-          <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<%= form_with model: @user, url: yield(:form_action), local: true  do |f| %>
+     <%= render 'shared/error_messages', object: f.object %>
+        signup
+        <% if local_assigns[:sign_up].present?%>
+          <%= f.label :username %>
+          <%= f.text_field :username, class: 'form-control' %>
         <% end %>
-      <% else %>
-      sign_up
-        <%= render 'shared/error_messages' %>
-        <%= f.label :username %>
-        <%= f.text_field :username, class: 'form-control' %>
+       <%#= render 'shared/error_messages' @user%>
+       login
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
+      <% if local_assigns[:sign_up].present?%>
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <% end %>    
         <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-      <% end %>
-  <% end %>
+<% end %>
     

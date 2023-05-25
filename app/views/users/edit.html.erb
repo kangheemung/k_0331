@@ -4,7 +4,7 @@
 <% provide(:form_action, users_path(@user) )%>
 <div class="container">
     <h1>sign_up page</h1>
-      <%= render  "form",user: @user %> 
+      <%= render  "form",local:{user: @user }%> 
  <%= hidden_field_tag :email, @user.email %>
     <div class="gravatar_edit">
       <%= gravatar_for @user %>

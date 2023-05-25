@@ -15,18 +15,14 @@
            <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "Users", users_index_path %></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "post一覧",posts_index_path %></a>
-          </li>
+        
 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",user_path(current_user) %></a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypost",posts_path(current_user) %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><%= link_to "Settings", edit_user_path(current_user) %></a>
+            <a class="nav-link active" aria-current="page" href="#"><%= link_to "Settings", edit_user_path(current_user.id) %></a>
           </li>
           
          <li class="nav-item">
@@ -61,7 +57,7 @@
             </a>
              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#"></a></li>
-              <li><a class="dropdown-item" href="#">  <%= link_to "sine_up", signup_path %></a></li>
+              <li><a class="dropdown-item" href="#">  <%= link_to "sine_up", users_new_path %></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#"> <%= link_to "login", login_path %></a></li>
             </ul>

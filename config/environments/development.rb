@@ -26,21 +26,17 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+ config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-northeast-1.amazonaws.com'}
+  #config.action_mailer.default_url_options = { host: host }
+  #config.file_watcher = ActiveSupport: :EventedFileUpdateChecker
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'localhost:3000' 
-  config.action_mailer.default_url_options = { host: host }
+ 
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -56,4 +52,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-northeast-1.amazonaws.com'}
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => "#{ENV["#"]}",
+    :password => "#{ENV["#"]}",
+    :authentication => 'plain'
+  }
+  
 end

@@ -1,9 +1,0 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
-<% @posts.each do |post| %>
-<p> =================-</p>
-<p>content:<%= post.content %></p>
-<p>user_name:<%=post.user.username %></p>
-<p> =================-</p>
-<%end%>
-<%=link_to "let's go write",posts_new_path%>

@@ -1,9 +1,7 @@
 <% provide(:title, 'Sign up') %>
 <% provide(:button_text, 'Create my account') %>
-<% provide(:form_action, signup_create_path )%>
+<% provide(:form_action, signup_create_path)%>
 <div class="container">
     <h1>sign_up page</h1>
- 
-       <%#= render 'shared/error_messages', object: f.object %>
-      <%= render  "form",user: @user %> 
+      <%= render "form",:sign_up => true %> 
     </div>

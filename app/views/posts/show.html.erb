@@ -1,8 +1,0 @@
-<h1><%= current_user.username %>様の投稿したpost</h1>
-<p>投稿内容を確認して下さい！</p>
-<% @posts.each do |post| %>
-  <p><%= post.content %>
-     <%= link_to "edit",post_edit_path(post.id)%>
-  </p>
-<% end %>
-<%= link_to "Let's write",post_new_path %>
