@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   
   def create
     @user=User.new(user_params)
-      if @user.save 
-        UserMailer.account_activation(@user).deliver_now#確認メールを送信
+      if @user.save
+        @user.send_activation_email#確認メールを送信
         flash[:info] = "Please check your email to activate your account."
         redirect_to root_path
          flash[:email] = "Your message was successfully sent."

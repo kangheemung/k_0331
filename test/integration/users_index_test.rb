@@ -8,7 +8,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
 
   test "index including pagination" do
     log_in_as(@user)
-    get users_index_path
+    get users_index_path(@users)
     assert_template 'users/index'
     assert_select 'div.pagination', count:2
     User.paginate(page: 1).each do |user|

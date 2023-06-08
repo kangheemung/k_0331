@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
- 
 
 
   root 'static_pages#home'
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   
   #get 'posts/index'=>'posts#index'
   #get 'posts/new'=>'posts#new'
-  post'posts/create'=>'posts#create' ,as: 'post'
+  post'posts/create'=>'posts#create' ,as: 'posts'
   delete 'posts/destoy'=>'posts#destroy',as: 'post_destroy'
   # 'posts/:user_id/edit' => 'posts#edit',as: 'edit_posts'
   #patch'posts/:user_id/update'=>'posts#update'
@@ -18,13 +17,16 @@ Rails.application.routes.draw do
   
   get '/users'=>'users#index',as: 'users_index'
   get '/users/new'=>'users#new',as: 'users_new'
-  post'/users'=>'users#create',as: 'signup_create'
+  post'/users/new'=>'users#create',as: 'signup_create'
+  get '/users/:id/following'=>'users#following',as: 'following_user'
+  get '/users/:id/followers'=>'users#followers',as: 'followers_user'
   get 'users/:id/edit'=>'users#edit',as: 'edit_user'
-  patch'users/:id'=>'users#update',as: 'users'
+  patch 'users/:id'=>'users#update',as: 'users'
   delete 'users/:id'=>'users#destroy',as: 'user_destroy'
   get 'users/:id'=>'users#show',as: 'user'
+     
 
-  get 'account_activations/edit'=>'account_activations#edit',as: 'edit_account_activation'
+  get 'account_activations/:id/edit'=>'account_activations#edit',as: 'edit_account_activation'
   get 'password_resets/new'=> 'password_resets#new',as: 'new_password_reset'
   post 'password_resets/create'=>'password_resets#create',as: 'password_resets'
   get 'password_resets/:id/edit'=>'password_resets#edit',as: 'edit_password_reset'

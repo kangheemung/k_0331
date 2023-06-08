@@ -41,7 +41,8 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-
+# host = 'samplehost'
+  #Rails.application.routes.default_url_options[:host] = host
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
@@ -64,7 +65,8 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
-
+  config.web_console.whitelisted_ips='0.0.0.0/0'
+  config.web_console.allowed_ips = '127.0.0.1'
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
@@ -74,16 +76,17 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.action_mailer.raise_delivery_errors = true
+  
   config.action_mailer.delivery_method = :smtp
-  host = 'https://localhost:8080'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com'}
+  
   ActionMailer::Base.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'localhost:8080',
+    :port           => ENV['587'],
+    :address        => ENV['smtp.gmail.com"'],
+    :user_name      => ENV['#'],
+    :password       => ENV['#'],
+    :domain         => 'smtp.gmail.com',
     :enable_starttls_auto => true
   }
   if ENV["RAILS_LOG_TO_STDOUT"].present?

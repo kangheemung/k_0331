@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.text :content
       t.integer :user_id
-      t.datetime :created_at
+      t.datetime :created_at 
       t.datetime :update_at
       t.references :user, index: true, foreign_key: true
       t.timestamps null: false

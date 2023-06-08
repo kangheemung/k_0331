@@ -18,7 +18,7 @@
         
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",user_path(current_user) %></a>
+            <a class="nav-link active" aria-current="page" href="#"> <%= link_to "mypage",user_path(current_user.id,current_user.posts.ids) %></a>
           </li>
 
           <li class="nav-item">

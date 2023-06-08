@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   test "email validation should reject invalid addresses" do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar.com]
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
@@ -78,5 +78,14 @@ class UserTest < ActiveSupport::TestCase
     assert_difference 'Post.count', -1 do
       @user.destroy
     end
+  end
+   test "should follow and unfollow a user" do
+    michael = users(:michael)
+    archer  = users(:archer)
+    assert_not michael.following?(archer)
+    michael.follow(archer)
+    assert michael.following?(archer)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
   end
 end

@@ -9,15 +9,14 @@ class UserMailer < ApplicationMailer
   #end
 
   def account_activation(user)
-    @greeting = "Hi"
+    @user = user
     @username = user.username
-    mail to: user.email, subject: "ようこそ！！"
+    mail(to: user.email, subject: "account_activation")
   end
 
   #   en.user_mailer.user_created.subject
   #
   def password_reset(user)
-    @greeting = "Hi"
     @user = user
     mail to: user.email, subject: "Password reset"
   end

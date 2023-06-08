@@ -32,7 +32,7 @@ gem 'faker',          '1.7.3'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'gmail'
-gem 'mail'
+gem 'mail', '~> 2.7', '>= 2.7.1'
 gem 'resque', require: 'resque/server'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -69,7 +69,7 @@ group :test do
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
 end
-
+gem 'figaro'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

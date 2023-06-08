@@ -1,23 +1,21 @@
  <p><% provide(:title, @user.username) %></p>
- <div>
- <h1>
-  <p><%= gravatar_for @user%></p>
-  <p><%= @user.username %></p>
-  <p> user_email:<%= @user.email%></p>
-  <p><%= @user.created_at %>, <%= @user.updated_at %></p>
-  <p>
-  Time.now: <%= Time.now %>
-</p>
- </h1>
+   <div class="row">
+    <div>
+     <h1><p><%= gravatar_for @user%></p></h1>
+     <p><%= @user.username %></p>
+     <p> user_email:<%= @user.email%></p>
+     <p><%= @user.created_at %>, <%= @user.updated_at %></p>
+     <p>Time.now: <%= Time.now %></p>
+    </div>
    <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate  @posts%>
-    <% end %>
-  </div>
- <div class="edit">
-  <%=link_to "edit", edit_user_path(@user.id) %>
- </div>
+     <% if @user.posts.any? %>
+       <h3>posts (<%= @user.posts.count %>)</h3>
+            <%= render @posts %>
+            <%= will_paginate @posts %>
+         </ol>
+       </div>
+     <% end %>
+   </div>
+
+  
+ 

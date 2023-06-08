@@ -1,7 +1,10 @@
 <% provide(:title, 'Sign up') %>
 <% provide(:button_text, 'Create my account') %>
 <% provide(:form_action, signup_create_path)%>
-<div class="container">
+
+  
+   <div class="container">
     <h1>sign_up page</h1>
-      <%= render "form",:sign_up => true %> 
+      <%= render "form", :sign_up => true, locals: {user: @user}%> 
     </div>
+ 

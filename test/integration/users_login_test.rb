@@ -7,9 +7,9 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   
 
   test "login with invalid information" do
-    get login_url
+    get login_path
     assert_template 'sessions/new'
-    post login_create_path, params: {user:{ email: "", 
+    post login_create_path, params:{session:{ email: "", 
                                           password: "" } }
     assert_template 'sessions/new'
     assert_not flash.empty?
@@ -17,8 +17,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   test "login with valid information" do
-    get login_url
-    post login_create_path, params: {user:{email:    @user.email,
+    get login_path
+    post login_create_path, params:{session:{email: @user.email,
                                           password: 'password' } }
     assert_redirected_to @user
     follow_redirect!
@@ -28,8 +28,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path
   end
   test "login with valid information followed by logout" do
-    get login_url
-    post login_create_path, params: { user: { email:    @user.email,
+    get login_path
+    post login_create_path, params:{ session:{ email: @user.email,
                                           password: 'password' }} 
     assert is_logged_in?
     assert_redirected_to @user
@@ -61,5 +61,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # クッキーを削除してログイン
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
+    assert_nil cookies['remember_token']
   end
 end

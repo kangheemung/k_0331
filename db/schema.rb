@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_22_134428) do
+ActiveRecord::Schema.define(version: 2023_05_29_060758) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 2023_05_22_134428) do
     t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "confirmation_status", default: 1, null: false
+    t.string "confirmation_token", limit: 64
+    t.datetime "expiration_date"
   end
 
 end

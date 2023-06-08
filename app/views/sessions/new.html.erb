@@ -1,9 +1,13 @@
 <% provide(:title, "Log in") %>
-<% provide(:form_action, login_create_path )%>
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%# provide(:form_action, login_create_path )%>
 
-<%= render partial: "users/form",locals:{email: params[:email],password: params[:password]}%>
+
+<% content_for :form_action do %>
+  <%= login_create_path %>
+  <% if session %>
+　  <%= render partial: "users/form",locals: {session: :session} ,scope: :session %>
+　 <% end %>
+<% end %>
 
 <%#=form_for "session", url: login_path do |f|%>
     <p><%#= f.label:email %></p>
