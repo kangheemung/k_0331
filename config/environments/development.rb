@@ -51,7 +51,7 @@ Rails.application.configure do
  #config.action_controller.default_url_options = { host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com' }
 
   #config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com'}
- config.web_console.whitelisted_ips='0.0.0.0/0'
+ config.web_console.whitelisted_ips='0.0.0.0'
  config.web_console.allowed_ips = '127.0.0.1'
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
