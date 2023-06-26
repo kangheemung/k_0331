@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/users/:id/following'=>'users#following',as: 'following_user'
   get '/users/:id/followers'=>'users#followers',as: 'followers_user'
   get 'users/:id/edit'=>'users#edit',as: 'edit_user'
+  get'users/show_follow'=>'users#show_follow',as: 'show_follow'
   patch 'users/:id'=>'users#update',as: 'users'
   delete 'users/:id'=>'users#destroy',as: 'user_destroy'
   get 'users/:id'=>'users#show',as: 'user'

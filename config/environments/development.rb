@@ -51,15 +51,15 @@ Rails.application.configure do
  #config.action_controller.default_url_options = { host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com' }
 
   #config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com'}
- config.web_console.whitelisted_ips='0.0.0.0'
- config.web_console.allowed_ips = '127.0.0.1'
+ #config.web_console.whitelisted_ips='0.0.0.0'
+ #config.web_console.allowed_ips = '127.0.0.1'
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   #config.action_controller.default_url_options = {host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com',:port => 22}
   #host = "https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-southeast-1.amazonaws.com"
   #Rails.application.routes.default_url_options[:host] = host
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://d96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-northeast-1.amazonaws.com'}
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'd96f67405e1344c0b876c76d8e920b41.vfs.cloud9.ap-northeast-1.amazonaws.com'}
  
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -68,7 +68,7 @@ Rails.application.configure do
     :port => 587,
     :domain => 'smtp.gmail.com',
     :user_name => '#',
-    :password => '#',
+    :password => '# ',
     :authentication => 'plain'
   }
   
